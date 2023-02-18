@@ -7,8 +7,6 @@ import javax.persistence.Persistence;
 
 import com.jsp.company.dto.Company;
 
-
-
 public class CompanyDao {
 	EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Nikita");
 	EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -26,6 +24,10 @@ public class CompanyDao {
 
 	public Company getCompanyByID(int id) {
 		Company c1 = entityManager.find(Company.class, id);
+		System.out.println("Company Details..");
+		System.out.println(c1.getId());
+		System.out.println(c1.getName());
+		System.out.println(c1.getLoc());
 		return c1;
 	}
 
@@ -51,7 +53,7 @@ public class CompanyDao {
 			entityTransaction.commit();
 
 		} else {
-			System.out.println("Company Details found..");
+			System.out.println("Company Details Not found..");
 
 		}
 		return c1;

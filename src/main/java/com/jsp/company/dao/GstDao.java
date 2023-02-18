@@ -7,8 +7,6 @@ import javax.persistence.Persistence;
 
 import com.jsp.company.dto.Gst;
 
-
-
 public class GstDao {
 	EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("Nikita");
 	EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -26,6 +24,9 @@ public class GstDao {
 
 	public Gst getGstByID(int id) {
 		Gst g1 = entityManager.find(Gst.class, id);
+		System.out.println("Gst Details..");
+		System.out.println(g1.getId());
+		System.out.println(g1.getGstno());
 		return g1;
 	}
 
@@ -50,7 +51,7 @@ public class GstDao {
 			entityTransaction.commit();
 
 		} else {
-			System.out.println("Gst Details found..");
+			System.out.println("Gst Details Not found..");
 
 		}
 		return g1;
